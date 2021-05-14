@@ -6,6 +6,19 @@ import mongoose from 'mongoose';
 import morgan from 'morgan';
 import routes from './REST/routes';
 
+mongoose.connect(config.databaseUrl, {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useFindAndModify: false
+}, (error) => {
+  if (error) {
+    console.error(error);
+  }
+  else {
+    console.info('Connect with database established');
+  }
+});
+
 const app = express();
 app.use(express.static(__dirname + '/public'));
 
